@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 <style>
 :root{
-  --bg:#0b0b0f;
-  --card:#11121a;
-  --text:#ffffff;
-  --muted:#b8b8c2;
+  --bg:#ffffff;
+  --card:#ffffff;
+  --text:#111;
+  --muted:#555;
   --accent:#ff7a18;
   --accent2:#ff3d00;
 }
@@ -27,10 +28,12 @@
 }
 
 body{
-  background: radial-gradient(circle at top, #1a1a22, var(--bg));
-  color:var(--text);
+  background: linear-gradient(135deg, #ffffff, #eef3f9);
+  color:#111;
   line-height:1.5;
 }
+  
+
 .socialmedia-links{
     color: var(--muted);
     text-decoration: underline;
@@ -116,17 +119,28 @@ p{
 
 /* BOOK */
 .book{
-  flex:1;
+  /*flex:1;*/
   display:flex;
   justify-content:center;
+  align-items:center;
+  position:relative;
 }
 
 .book img{
-  max-width:380px;
+  max-width:360px;
   width:100%;
   border-radius:12px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.6);
-  transform:perspective(800px) rotateY(-8deg);
+  box-shadow:0 25px 80px rgba(0,0,0,0.25);
+  transform:none; /* removes visual offset */
+}
+.book::before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  background:radial-gradient(circle, rgba(255,122,24,0.25), transparent 70%);
+  filter:blur(40px);
+  z-index:-1;
 }
 
 /* SECTIONS */
@@ -148,11 +162,11 @@ p{
 }
 
 .card{
-  background:var(--card);
+  background:#ffffff;
   padding:25px;
   border-radius:12px;
-  border:1px solid rgba(255,255,255,0.05);
-  text-align:center;
+  border:1px solid rgba(0,0,0,0.05);
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
 }
 
 .card h3{
@@ -217,6 +231,68 @@ footer { text-align: center; margin: 40px 0; font-size: 14px; color: #777; }
     transform:none;
   }
 }
+.email-capture{
+  padding:100px 10%;
+  display:flex;
+  justify-content:center;
+}
+
+.email-box{
+  max-width:600px;
+  width:100%;
+  background:#ffffff;
+  padding:40px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,0.08);
+  border:1px solid rgba(0,0,0,0.05);
+}
+
+.email-box h2{
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+.email-box p{
+  color:#555;
+  margin-bottom:25px;
+}
+
+.email-box form{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.email-box input{
+  padding:14px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  width:60%;
+  min-width:220px;
+  font-size:16px;
+}
+
+.email-box button{
+  padding:14px 20px;
+  border:none;
+  border-radius:8px;
+  background:linear-gradient(135deg, #ff7a18, #ff3d00);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.email-box button:hover{
+  transform:translateY(-2px);
+}
+
+.email-box small{
+  display:block;
+  margin-top:15px;
+  color:#888;
+}
 </style>
 </head>
 
@@ -227,10 +303,10 @@ footer { text-align: center; margin: 40px 0; font-size: 14px; color: #777; }
   <div class="hero-content">
     <div class="badge">The Ultimate Guide</div>
 
-    <h1>
-      One-Page Websites<br/>
-      <span>That Convert</span>
-    </h1>
+     <h1>
+  Build One-Page Websites<br>
+  <span>That Actually Convert</span>
+</h1>
 
     <p>
       Learn how to build high-converting one-page websites that attract visitors,
@@ -247,7 +323,25 @@ footer { text-align: center; margin: 40px 0; font-size: 14px; color: #777; }
   </div>
 
   <div class="book">
-    <img src="img/one-page-website-book-cover-2.png"Book Cover">
+    <img src="img/one-page-website-book-cover-2.png" alt="Book Cover">
+  </div>
+</section>
+<section class="email-capture">
+  <div class="email-box">
+    
+    <h2>Get the Free Conversion Checklist</h2>
+    <p>
+      Discover the exact one-page layout that turns visitors into leads and sales.
+      Simple. Actionable. Proven.
+    </p>
+
+    <form action="https://formspree.io/f/mnjwjlkb" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Send Me the Checklist</button>
+    </form>
+
+    <small>No spam. Unsubscribe anytime.</small>
+
   </div>
 </section>
 
@@ -270,7 +364,7 @@ footer { text-align: center; margin: 40px 0; font-size: 14px; color: #777; }
 
     <div class="card">
         <span class="material-icons md-48">rocket_launch</span>
-      <h3>Traffic → Sales Systems</h3>
+      <h3>Traffic ? Sales Systems</h3>
       <p>Turn visitors into customers with optimized funnels and CTA placement strategies.</p>
     </div>
 
@@ -314,12 +408,14 @@ footer { text-align: center; margin: 40px 0; font-size: 14px; color: #777; }
   </div>
 </section>
 
+
 <!-- CTA -->
 <section class="footer-cta">
   <h2>Ready to Build One-Page Websites That Convert?</h2>
   <p>Get your copy of One-Page Websites That Convert on Amazon and start building pages that actually sell.</p>
   <a class="cta" href="https://www.amazon.com/dp/B0GX32VGQ4" target="_blank">GET YOUR COPY ON AMAZON</a>
 </section>
+
 <footer> © 2026 David Morgan | All Rights Reserved </footer>
 
 </body>
